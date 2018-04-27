@@ -1,25 +1,16 @@
 from PySide import QtGui
 
+import os
+
 import pymel.core as pm
 
-from data_access import file_handling
-from exchange import tagging
+def main(objs, path):
+    name = '.rotation_{0}'
 
-def main():
-    cams = tagging.ListTag(tagging.TAG_RENDER_CAMERA, True)
-
-    if not cams:
-        pm.warning("No or more then one tagged camera in scene file!")
-        return
-
-    name = '.camera_rotation_{0}'
-
-    file_ = file_handling.mayaFile.fromFile(pm.sceneName())
-
-    for cam in cams:
-        cam_trans = cam.getParent()
-        new_name = name.format(cam_trans.name())
-        pub_file = file_.get_publish_file(new_name, '.jpg')
+    for obj in objs:
+        obj_trans = obj.getParent()
+        new_name = name.format(obj_trans.name())
+        pub_file = os.path.join(path, '.'join([new_name, 'jpg']))
         pm.select(clear=1)
         pm.select(cam_trans.r)
         editor_name = 'Graph Editor'
