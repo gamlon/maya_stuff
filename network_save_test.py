@@ -7,10 +7,10 @@ import platform
 
 from maya import cmds
 
-FILE_NAME = 'xxx_air_c17-lidar_mdl_v003_kpm.ma'
-TEST_NAME = 'xxx_air_c17-lidar_mdl_v003_kpm_test.ma'
-LOCAL_PATH = r'C:\pxm_localfiles\temp'
-NETWORK_PATH = r'X:\_pxm\filedata\app_trash\20160629\maya_test'
+FILE_NAME = 'test1.ma'
+TEST_NAME = 'test2.ma'
+LOCAL_PATH = r'C:\temp'
+NETWORK_PATH = r'X:\maya_test'
 
 
 def save(path):
